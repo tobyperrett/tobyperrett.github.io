@@ -1,1 +1,4 @@
 theme: jekyll-theme-slate
+permalink: /:categories/:year/:month/:title/
+title: Test title
+description: tst description
