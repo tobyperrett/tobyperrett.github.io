@@ -2,7 +2,7 @@
 Paper accepted at ACCV 2020 - Meta-Learning with Context-Agnostic Initialisations
 
 ## About
-I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, UK.  I work with Alessandro Masullo, Tilo Burghardt, Dima Damen and Majid Mirmehdi.  I'm interested in action recognition
+I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, UK.  I work with Alessandro Masullo, Tilo Burghardt, Dima Damen and Majid Mirmehdi.  I'm interested in action recognition from videos, particulary few-shot and multi-domain settings.
 
 ## Research
 
@@ -22,7 +22,7 @@ CVPR 2019
 Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, Toby Perrett, Will Price, Michael Wray
 ECCV 2018
 
-### Recurrent assistance: cross-dataset training of LSTMs on kitchen tasks
+### Recurrent Assistance: Cross-Dataset Training of LSTMs on Kitchen Tasks
 Toby Perrett, Dima Damen
 ICCVW 2017
 
