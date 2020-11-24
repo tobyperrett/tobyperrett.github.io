@@ -1,7 +1,8 @@
 ## News
+Paper accepted at ACCV 2020 - Meta-Learning with Context-Agnostic Initialisations
 
 ## About
-I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, UK.  I work with Alessandro Masullo, Tilo Burghardt, Dima Damen and Majid Mirmehdi.  I'm interested in 
+I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, UK.  I work with Alessandro Masullo, Tilo Burghardt, Dima Damen and Majid Mirmehdi.  I'm interested in action recognition
 
 ## Research
 
@@ -24,5 +25,11 @@ ECCV 2018
 ### Recurrent assistance: cross-dataset training of LSTMs on kitchen tasks
 Toby Perrett, Dima Damen
 ICCVW 2017
+
+### Detection of Valuable Left-Behind Items in Vehicle Cabins
+Toby Perrett, Eduardo Dias, Majid Mirmehdi
+IEEE Intelligent Vehicles Symposium 2017
+
+
 
 
