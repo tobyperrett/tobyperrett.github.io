@@ -46,3 +46,8 @@ Toby Perrett, Eduardo Dias, Majid Mirmehdi
 
 IEEE Transactions on Intelligent Transport Systems 2016
 
+## Contact
+
+toby.perrett at bristol fullstop ac fullstop uk
+[Google Scholar](https://scholar.google.com/citations?hl=en&user=eWFLwEUAAAAJ)
+
