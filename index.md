@@ -9,7 +9,7 @@ I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, 
 ### [Meta-Learning with Context-Agnostic Initialisations](https://tobyperrett.github.io/contextagnosticweb/)
 Toby Perrett, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen
 
-ACCV 2020
+[ACCV 2020](https://openaccess.thecvf.com/content/ACCV2020/html/Perrett_Meta-Learning_with_Context-Agnostic_Initialisations_ACCV_2020_paper.html)
 
 ### [The EPIC-KITCHENS Dataset: Collection, Challenges and Baselines](https://arxiv.org/abs/2005.00343)
 Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, Toby Perrett, Will Price, Michael Wray
