@@ -1,5 +1,6 @@
 ## News
-New paper and code released: [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1) [(GitHub)](https://github.com/tobyperrett/trx) 
+New paper and code released: [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1) [(GitHub)](https://github.com/tobyperrett/trx).
+
 Paper accepted at ACCV 2020: [Meta-Learning with Context-Agnostic Initialisations](https://tobyperrett.github.io/contextagnosticweb/).
 
 ## About
