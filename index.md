@@ -9,9 +9,9 @@ I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, 
 ## Research
 
 ### [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1)
-[GitHub](https://github.com/tobyperrett/trx) 
 Toby Perrett, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen
 
+[ArXiv 2020](https://arxiv.org/abs/2101.06184v1)  [GitHub](https://github.com/tobyperrett/trx) 
 
 ### [Meta-Learning with Context-Agnostic Initialisations](https://tobyperrett.github.io/contextagnosticweb/)
 Toby Perrett, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen
