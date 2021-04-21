@@ -1,5 +1,5 @@
 ## Latest News
-New paper and code released: [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1) [(GitHub)](https://github.com/tobyperrett/trx).
+Paper accepted at CVPR 2021: [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1) [(GitHub)](https://github.com/tobyperrett/trx).
 
 ## About
 I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, UK.  I work with Alessandro Masullo, Tilo Burghardt, Dima Damen and Majid Mirmehdi.  I'm interested in action recognition from videos, particulary few-shot and multi-domain settings.
@@ -9,7 +9,7 @@ I'm a postdoctoral researcher in the SPHERE group at the University of Bristol, 
 ### [Temporal-Relational CrossTransformers for Few-Shot Action Recognition](https://arxiv.org/abs/2101.06184v1)
 Toby Perrett, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen
 
-[ArXiv 2020](https://arxiv.org/abs/2101.06184v1)  [GitHub](https://github.com/tobyperrett/trx) 
+[CVPR 2021](https://arxiv.org/abs/2101.06184v1)  [GitHub](https://github.com/tobyperrett/trx) 
 
 ### [Meta-Learning with Context-Agnostic Initialisations](https://tobyperrett.github.io/contextagnosticweb/)
 Toby Perrett, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen
