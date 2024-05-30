@@ -6,7 +6,7 @@ title: Toby Perrett # the website title (if blank, full name will be used instea
 first_name: Toby
 middle_name:
 last_name: Perrett
-email:
+email: toby.perrett@bristol.ac.uk
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
