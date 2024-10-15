@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Paper accepted at ACCV 2024 as an oral presentation (top 5%)! [It's Just Another Day: Unique Video Captioning by Discriminative Prompting](https://tobyperrett.github.io/its-just-another-day/). Code, benchmarks and models available.
+Paper accepted at ACCV 2024 as an oral presentation! [It's Just Another Day: Unique Video Captioning by Discriminative Prompting](https://tobyperrett.github.io/its-just-another-day/). Code, benchmarks and models available.
