@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[HD-EPIC: A Highly Detailed Egocentric Video Dataset](https://dimadamen.github.io/OSNOM/) is released and on arxiv!
+[HD-EPIC: A Highly Detailed Egocentric Video Dataset](https://hd-epic.github.io/) is released and on arxiv!
