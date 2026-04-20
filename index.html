@@ -108,7 +108,7 @@
     }
     .news-list li:last-child { border-bottom: none; }
     .news-date { color: var(--muted); white-space: nowrap; padding-top: 0.05rem; }
-    .news-hidden { display: none; }
+    .news-list li.news-hidden { display: none; }
     #news-toggle {
       margin-top: 0.75rem;
       background: none;
@@ -285,7 +285,7 @@
         <span class="news-date">Mar 2025</span>
         <span><a href="https://hd-epic.github.io/">HD-EPIC: A Highly Detailed Egocentric Video Dataset</a> has been accepted at CVPR 2025!</span>
       </li>
-      <li>
+      <li class="news-hidden">
         <span class="news-date">Feb 2025</span>
         <span><a href="https://hd-epic.github.io/">HD-EPIC: A Highly Detailed Egocentric Video Dataset</a> is released and on arxiv!</span>
       </li>
@@ -374,7 +374,7 @@
       </li>
 
       <li class="pub-item">
-        <img class="pub-thumb" src="assets/img/publication_preview/hdepic2.gif" alt="HD-EPIC preview">
+        <img class="pub-thumb" src="assets/img/publication_preview/hdepic.gif" alt="HD-EPIC preview">
         <div>
           <div class="pub-title">HD-EPIC: A Highly-Detailed Egocentric Video Dataset</div>
           <div class="pub-authors"><span class="me">Toby Perrett</span>, Ahmad Darkhalil, Saptarshi Sinha, Omar Emara, Sam Pollard, Kranti Parida, Kaiting Liu, Prajwal Gatti, Siddhant Bansal, Kevin Flanagan, Jacob Chalk, Zhifan Zhu, Rhodri Guerrier, Fahd Abdelazim, Bin Zhu, Davide Moltisanti, Michael Wray, Hazel Doughty, Dima Damen</div>
@@ -596,7 +596,7 @@
   function toggleNews() {
     const hidden = document.querySelectorAll('.news-hidden');
     const btn = document.getElementById('news-toggle');
-    const showing = hidden[0].style.display === 'grid';
+    const showing = btn.textContent === 'Show less';
     hidden.forEach(el => el.style.display = showing ? 'none' : 'grid');
     btn.textContent = showing ? 'Show more' : 'Show less';
   }
