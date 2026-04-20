@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toby Perrett</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-alt: #f9fafb;
+      --radius: 6px;
+      --max-w: 860px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    nav .site-name { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+    nav a { color: var(--muted); font-size: 0.9rem; }
+    nav a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── Profile ─────────────────────────────────────────────── */
+    .profile {
+      padding: 3rem 0 2rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+    .profile-photo {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+    }
+    .profile-info h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 0.1rem; }
+    .profile-info .role { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
+    .profile-bio p { margin-bottom: 0.75rem; }
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.875rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+    }
+    .social-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── Section headings ────────────────────────────────────── */
+    section { padding: 2rem 0; border-top: 1px solid var(--border); }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-header h2 { font-size: 1.3rem; font-weight: 700; }
+    .section-header a { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── News ────────────────────────────────────────────────── */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 0.5rem 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date { color: var(--muted); white-space: nowrap; padding-top: 0.05rem; }
+    .news-hidden { display: none; }
+    #news-toggle {
+      margin-top: 0.75rem;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    #news-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Publications ────────────────────────────────────────── */
+    .pub-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .pub-thumb {
+      width: 110px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+    }
+    .pub-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; line-height: 1.4; }
+    .pub-authors { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-venue {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub-links a {
+      font-size: 0.78rem;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+    }
+    .pub-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── Bibliography ────────────────────────────────────────── */
+    .bib-year { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; color: var(--muted); }
+    .bib-year:first-child { margin-top: 0; }
+    .bib-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .bib-item {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.75rem;
+      border-left: 3px solid var(--border);
+      background: var(--bg-alt);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .bib-item .bib-title { font-weight: 600; }
+    .bib-item .bib-meta { color: var(--muted); font-size: 0.83rem; }
+    .bib-item .bib-links { margin-top: 0.25rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .bib-item .bib-links a {
+      font-size: 0.75rem;
+      padding: 0.1rem 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+    }
+    .bib-item .bib-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; align-items: center; text-align: center; }
+      .social-links { justify-content: center; }
+      .pub-item { grid-template-columns: 1fr; }
+      .pub-thumb { width: 100%; height: 140px; }
+      .news-list li { grid-template-columns: 1fr; gap: 0; }
+      .news-date { font-size: 0.78rem; }
+    }
+
+    /* highlight Toby's name in author lists */
+    .me { font-weight: 600; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <span class="site-name">Toby Perrett</span>
+    <a href="#news">News</a>
+    <a href="#selected">Selected Publications</a>
+    <a href="#bibliography">Full Bibliography</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- ── Profile ──────────────────────────────────────────────── -->
+  <div class="profile">
+    <img class="profile-photo" src="assets/img/prof_pic.jpg" alt="Toby Perrett">
+    <div class="profile-info">
+      <h1>Toby Perrett</h1>
+      <div class="role">Senior Research Engineer · Autodesk</div>
+      <div class="profile-bio">
+        <p>
+          Hi! I'm a Senior Research Engineer at Autodesk. Prior to that, I did my postdoc at the University of Bristol,
+          working with <a href="https://dimadamen.github.io/">Professor Dima Damen</a>, and co-advising
+          <a href="https://chiaraplizz.github.io/">Chiara Plizzari</a> and
+          <a href="https://www.linkedin.com/in/saptarshi-sinha-ab42a410b/">Saptarshi Sinha</a>.
+          I'm a founding member of the team collecting the
+          <a href="https://epic-kitchens.github.io">EPIC Kitchens</a> datasets, and also worked on the
+          <a href="https://www.robots.ox.ac.uk/~vgg/projects/visualai/index.html">Visual AI</a> project led by
+          <a href="https://www.robots.ox.ac.uk/~az/">Professor Andrew Zisserman</a>.
+        </p>
+        <p>
+          My research interests include datasets, benchmarks and methods for
+          <a href="https://hd-epic.github.io/">Egocentric video</a>,
+          <a href="https://tobyperrett.github.io/its-just-another-day/">Captioning</a>,
+          <a href="https://dimadamen.github.io/OSNOM/">3D understanding</a> and
+          <a href="https://autodeskailab.github.io/neuralCAD-Edit/">CAD</a>.
+          I'm also interested in improving models when labelled data is
+          <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Perrett_Temporal-Relational_CrossTransformers_for_Few-Shot_Action_Recognition_CVPR_2021_paper.pdf">scarce</a> or
+          <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Perrett_Use_Your_Head_Improving_Long-Tail_Video_Recognition_CVPR_2023_paper.pdf">imbalanced</a>.
+        </p>
+      </div>
+      <div class="social-links">
+        <a href="mailto:tobyperrett@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=eWFLwEUAAAAJ" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://github.com/tobyperrett" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── News ─────────────────────────────────────────────────── -->
+  <section id="news">
+    <div class="section-header">
+      <h2>News</h2>
+    </div>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">Apr 2026</span>
+        <span><a href="https://autodeskailab.github.io/neuralCAD-Edit/">neuralCAD-Edit: An Expert Benchmark for Multimodal-Instructed 3D CAD Editing</a> is released and on arxiv!</span>
+      </li>
+      <li>
+        <span class="news-date">Jan 2026</span>
+        <span><a href="https://tobyperrett.github.io/its-just-another-day/">It's Just Another Day: Unique Captioning by Discriminative Prompting</a> has been accepted in IJCV!</span>
+      </li>
+      <li>
+        <span class="news-date">Jun 2025</span>
+        <span><a href="https://tobyperrett.github.io/its-just-another-day/">It's Just Another Day: Unique Captioning by Discriminative Prompting</a> has received the <a href="https://egovis.github.io/awards/2023_2024/">EgoVis Distinguished Paper Award</a>, announced at CVPR 2025.</span>
+      </li>
+      <li>
+        <span class="news-date">Mar 2025</span>
+        <span>I've just joined Autodesk as a Senior Research Engineer!</span>
+      </li>
+      <li>
+        <span class="news-date">Mar 2025</span>
+        <span><a href="https://hd-epic.github.io/">HD-EPIC: A Highly Detailed Egocentric Video Dataset</a> has been accepted at CVPR 2025!</span>
+      </li>
+      <li>
+        <span class="news-date">Feb 2025</span>
+        <span><a href="https://hd-epic.github.io/">HD-EPIC: A Highly Detailed Egocentric Video Dataset</a> is released and on arxiv!</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Dec 2024</span>
+        <span>Received the ACCV Best Paper Award for <a href="https://tobyperrett.github.io/its-just-another-day/">It's Just Another Day: Unique Captioning by Discriminative Prompting</a>!</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Nov 2024</span>
+        <span><a href="https://dimadamen.github.io/OSNOM/">Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind</a> has been accepted at 3DV 2025!</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Oct 2024</span>
+        <span>Paper accepted at ACCV 2024 as an oral presentation (top 5%)! <a href="https://tobyperrett.github.io/its-just-another-day/">It's Just Another Day: Unique Captioning by Discriminative Prompting</a>. Code, benchmarks and models available.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Jun 2024</span>
+        <span>I'll be serving as an Area Chair for NeurIPS 2024, on the Datasets and Benchmarks track.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">May 2024</span>
+        <span>I was an <em>Outstanding Reviewer</em> at CVPR 2024!</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Apr 2024</span>
+        <span>New paper on arXiv: <a href="https://dimadamen.github.io/OSNOM/">Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind</a>. <a href="https://www.youtube.com/watch?v=Bo25xedgugY">Video</a>. <a href="https://arxiv.org/pdf/2404.05072.pdf">PDF</a>.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Sep 2023</span>
+        <span>I was an <em>Outstanding Reviewer</em> at ICCV 2023!</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Sep 2023</span>
+        <span>I gave a talk at the <a href="https://www.jade.ac.uk/">JADE</a> (UK Supercomputing Facility) 2023 event on egocentric vision and computational requirements.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Jul 2023</span>
+        <span>Paper accepted at ICCV 2023! <a href="https://github.com/Chiaraplizz/ARGO1M-What-can-a-cook/">What can a cook in Italy teach a mechanic in India? Action Recognition Generalisation Over Scenarios and Locations</a>.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">May 2023</span>
+        <span>I gave a talk at Samsung AI Centre Cambridge on scaling few-shot models to handle long-tail tasks.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Feb 2023</span>
+        <span>I gave a talk at the University of Exeter Computer Science Seminar Series on image/video datasets, model shortcuts, and recent solutions.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Feb 2023</span>
+        <span>Paper accepted at CVPR 2023! <a href="https://tobyperrett.github.io/lmr/">Use Your Head: Improving Long-Tail Video Recognition</a>. Code, benchmarks and models available.</span>
+      </li>
+      <li class="news-hidden">
+        <span class="news-date">Jan 2023</span>
+        <span>I gave a talk at the Visual AI group at the University of Oxford on our latest long-tail video work.</span>
+      </li>
+    </ul>
+    <button id="news-toggle" onclick="toggleNews()">Show more</button>
+  </section>
+
+  <!-- ── Selected Publications ─────────────────────────────────── -->
+  <section id="selected">
+    <div class="section-header">
+      <h2>Selected Publications</h2>
+      <a href="#bibliography">See all →</a>
+    </div>
+    <ul class="pub-list">
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/neuralcad-edit.png" alt="neuralCAD-Edit preview">
+        <div>
+          <div class="pub-title">neuralCAD-Edit: An Expert Benchmark for Multimodal-Instructed 3D CAD Model Editing</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Matthew Bourchard, William McCarthy</div>
+          <div class="pub-venue">arXiv, 2026</div>
+          <div class="pub-links"><a href="https://autodeskailab.github.io/neuralCAD-Edit/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/unique.gif" alt="Unique Captioning preview">
+        <div>
+          <div class="pub-title">It's Just Another Day: Unique Captioning by Discriminative Prompting</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Tengda Han, Dima Damen, Andrew Zisserman</div>
+          <div class="pub-venue">IJCV, 2026 &nbsp;·&nbsp; ACCV 2024 Best Paper Award &nbsp;·&nbsp; EgoVis Distinguished Paper Award</div>
+          <div class="pub-links"><a href="https://tobyperrett.github.io/its-just-another-day/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/hdepic2.gif" alt="HD-EPIC preview">
+        <div>
+          <div class="pub-title">HD-EPIC: A Highly-Detailed Egocentric Video Dataset</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Ahmad Darkhalil, Saptarshi Sinha, Omar Emara, Sam Pollard, Kranti Parida, Kaiting Liu, Prajwal Gatti, Siddhant Bansal, Kevin Flanagan, Jacob Chalk, Zhifan Zhu, Rhodri Guerrier, Fahd Abdelazim, Bin Zhu, Davide Moltisanti, Michael Wray, Hazel Doughty, Dima Damen</div>
+          <div class="pub-venue">CVPR, 2025</div>
+          <div class="pub-links"><a href="https://hd-epic.github.io/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/osnom.jpg" alt="OSNOM preview">
+        <div>
+          <div class="pub-title">Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind</div>
+          <div class="pub-authors">Chiara Plizzari, Shubham Goel, <span class="me">Toby Perrett</span>, Jacob Chalk, Angjoo Kanazawa, Dima Damen</div>
+          <div class="pub-venue">3DV, 2025</div>
+          <div class="pub-links"><a href="https://dimadamen.github.io/OSNOM/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/lmr.jpg" alt="Use Your Head preview">
+        <div>
+          <div class="pub-title">Use Your Head: Improving Long-Tail Video Recognition</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Saptarshi Sinha, Tilo Burghardt, Majid Mirmehdi, Dima Damen</div>
+          <div class="pub-venue">CVPR, 2023</div>
+          <div class="pub-links"><a href="https://tobyperrett.github.io/lmr/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/rescaling.gif" alt="Rescaling Egocentric Vision preview">
+        <div>
+          <div class="pub-title">Rescaling Egocentric Vision: Collection, Pipeline and Challenges for EPIC-KITCHENS-100</div>
+          <div class="pub-authors">Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Antonino Furnari, Evangelos Kazakos, Jian Ma, Davide Moltisanti, Jonathan Munro, <span class="me">Toby Perrett</span>, Will Price, Michael Wray</div>
+          <div class="pub-venue">IJCV, 2022</div>
+          <div class="pub-links"><a href="https://epic-kitchens.github.io/2023" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/trx.jpg" alt="TRX preview">
+        <div>
+          <div class="pub-title">Temporal-Relational CrossTransformers for Few-Shot Action Recognition</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen</div>
+          <div class="pub-venue">CVPR, 2021</div>
+          <div class="pub-links"><a href="https://tobyperrett.github.io/trxweb/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/ddlstm.jpg" alt="DDLSTM preview">
+        <div>
+          <div class="pub-title">DDLSTM: Dual-Domain LSTM for Cross-Domain Action Recognition</div>
+          <div class="pub-authors"><span class="me">Toby Perrett</span>, Dima Damen</div>
+          <div class="pub-venue">CVPR, 2019</div>
+          <div class="pub-links"><a href="https://tobyperrett.github.io/ddlstmweb/" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <img class="pub-thumb" src="assets/img/publication_preview/rescaling.gif" alt="EPIC-KITCHENS preview">
+        <div>
+          <div class="pub-title">Scaling Egocentric Vision: The EPIC-KITCHENS Dataset</div>
+          <div class="pub-authors">Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, <span class="me">Toby Perrett</span>, Will Price, Michael Wray</div>
+          <div class="pub-venue">ECCV, 2018</div>
+          <div class="pub-links"><a href="https://epic-kitchens.github.io/2018" target="_blank">Project</a></div>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ── Full Bibliography ──────────────────────────────────────── -->
+  <section id="bibliography">
+    <div class="section-header">
+      <h2>Full Bibliography</h2>
+    </div>
+
+    <h3 class="bib-year">2026</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">neuralCAD-Edit: An Expert Benchmark for Multimodal-Instructed 3D CAD Model Editing</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Matthew Bourchard, William McCarthy &mdash; arXiv, 2026</div>
+        <div class="bib-links"><a href="https://autodeskailab.github.io/neuralCAD-Edit/" target="_blank">Project</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">It's Just Another Day: Unique Captioning by Discriminative Prompting</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Tengda Han, Dima Damen, Andrew Zisserman &mdash; IJCV, 2026</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/its-just-another-day/" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2025</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">HD-EPIC: A Highly-Detailed Egocentric Video Dataset</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Ahmad Darkhalil, Saptarshi Sinha, et al., Dima Damen &mdash; CVPR, 2025</div>
+        <div class="bib-links"><a href="https://hd-epic.github.io/" target="_blank">Project</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">Spatial Cognition from Egocentric Video: Out of Sight, Not Out of Mind</div>
+        <div class="bib-meta">Chiara Plizzari, Shubham Goel, <span class="me">Toby Perrett</span>, Jacob Chalk, Angjoo Kanazawa, Dima Damen &mdash; 3DV, 2025</div>
+        <div class="bib-links"><a href="https://dimadamen.github.io/OSNOM/" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2024</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">It's Just Another Day: Unique Captioning by Discriminative Prompting</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Tengda Han, Dima Damen, Andrew Zisserman &mdash; ACCV 2024 (Best Paper Award, Oral)</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/its-just-another-day/" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2023</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Use Your Head: Improving Long-Tail Video Recognition</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Saptarshi Sinha, Tilo Burghardt, Majid Mirmehdi, Dima Damen &mdash; CVPR, 2023</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/lmr/" target="_blank">Project</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">What can a cook in Italy teach a mechanic in India? Action Recognition Generalisation Over Scenarios and Locations</div>
+        <div class="bib-meta">Chiara Plizzari, <span class="me">Toby Perrett</span>, Barbara Caputo, Dima Damen &mdash; ICCV, 2023</div>
+        <div class="bib-links"><a href="https://github.com/Chiaraplizz/ARGO1M-What-can-a-cook/" target="_blank">GitHub</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">Centre Stage: Centricity-based Audio-Visual Temporal Action Detection</div>
+        <div class="bib-meta">Hanyuan Wang, Majid Mirmehdi, Dima Damen, <span class="me">Toby Perrett</span> &mdash; arXiv, 2023</div>
+        <div class="bib-links"><a href="https://github.com/hanielwang/Audio-Visual-TAD" target="_blank">GitHub</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2022</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Rescaling Egocentric Vision: Collection, Pipeline and Challenges for EPIC-KITCHENS-100</div>
+        <div class="bib-meta">Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Antonino Furnari, Evangelos Kazakos, Jian Ma, Davide Moltisanti, Jonathan Munro, <span class="me">Toby Perrett</span>, Will Price, Michael Wray &mdash; IJCV, 2022</div>
+        <div class="bib-links"><a href="https://epic-kitchens.github.io/2023" target="_blank">Project</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">Personalized Energy Expenditure Estimation: Visual Sensing Approach With Deep Learning</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Alessandro Masullo, Tilo Burghardt, Dima Damen, Ian Craddock, Majid Mirmehdi &mdash; JMIR Formative Research, 2022</div>
+        <div class="bib-links"><a href="https://formative.jmir.org/2022/9/e33606/" target="_blank">Paper</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">An Evaluation of OCR on Egocentric Data</div>
+        <div class="bib-meta">Valentin Popescu, Dima Damen, <span class="me">Toby Perrett</span> &mdash; EPIC Workshop at CVPR, 2022</div>
+        <div class="bib-links"><a href="https://arxiv.org/pdf/2206.05496.pdf" target="_blank">PDF</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">Refining Action Boundaries for One-Stage Detection</div>
+        <div class="bib-meta">Hanyuan Wang, Majid Mirmehdi, Dima Damen, <span class="me">Toby Perrett</span> &mdash; AVSS, 2022</div>
+        <div class="bib-links"><a href="https://github.com/hanielwang/Refining_Boundary_Head" target="_blank">GitHub</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2021</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Temporal-Relational CrossTransformers for Few-Shot Action Recognition</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen &mdash; CVPR, 2021</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/trxweb/" target="_blank">Project</a></div>
+      </li>
+      <li class="bib-item">
+        <div class="bib-title">The EPIC-KITCHENS Dataset: Collection, Challenges and Baselines</div>
+        <div class="bib-meta">Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, <span class="me">Toby Perrett</span>, Will Price, Michael Wray &mdash; IEEE TPAMI, 2021</div>
+        <div class="bib-links"><a href="https://epic-kitchens.github.io/2021" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2020</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Meta-Learning with Context-Agnostic Initialisations</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Alessandro Masullo, Tilo Burghardt, Majid Mirmehdi, Dima Damen &mdash; ACCV, 2020</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/contextagnosticweb/" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2019</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">DDLSTM: Dual-Domain LSTM for Cross-Domain Action Recognition</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Dima Damen &mdash; CVPR, 2019</div>
+        <div class="bib-links"><a href="https://tobyperrett.github.io/ddlstmweb/" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2018</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Scaling Egocentric Vision: The EPIC-KITCHENS Dataset</div>
+        <div class="bib-meta">Dima Damen, Hazel Doughty, Giovanni Maria Farinella, Sanja Fidler, Antonino Furnari, Evangelos Kazakos, Davide Moltisanti, Jonathan Munro, <span class="me">Toby Perrett</span>, Will Price, Michael Wray &mdash; ECCV, 2018</div>
+        <div class="bib-links"><a href="https://epic-kitchens.github.io/2018" target="_blank">Project</a></div>
+      </li>
+    </ul>
+
+    <h3 class="bib-year">2017</h3>
+    <ul class="bib-list">
+      <li class="bib-item">
+        <div class="bib-title">Detection of Valuable Left-Behind Items in Vehicle Cabins</div>
+        <div class="bib-meta"><span class="me">Toby Perrett</span>, Majid Mirmehdi, Eduardo Dias &mdash; IEEE Intelligent Vehicles Symposium, 2017</div>
+        <div class="bib-links"><a href="https://ieeexplore.ieee.org/abstract/document/7995862" target="_blank">Paper</a></div>
+      </li>
+    </ul>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Toby Perrett &middot; <a href="mailto:tobyperrett@gmail.com">tobyperrett@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  function toggleNews() {
+    const hidden = document.querySelectorAll('.news-hidden');
+    const btn = document.getElementById('news-toggle');
+    const showing = hidden[0].style.display === 'grid';
+    hidden.forEach(el => el.style.display = showing ? 'none' : 'grid');
+    btn.textContent = showing ? 'Show more' : 'Show less';
+  }
+</script>
+
+</body>
+</html>
